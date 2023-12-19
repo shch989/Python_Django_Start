@@ -74,3 +74,12 @@ def monthly_challenges(request, month):
   
   return HttpResponse(challenge_text)
 ```
+
+## Param 타입 지정
+### Param에 입력될 타입을 지정할 수 있다.
+```
+urlpatterns = [
+    path("<int:month>", views.monthly_challenges_by_number), # int 값
+    path("<str:month>", views.monthly_challenges) # string 값
+]
+```
