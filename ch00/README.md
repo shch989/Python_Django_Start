@@ -15,7 +15,18 @@ python -m pip install Django
 django-admin
 ```
 
-## 장고 프로젝트 생성
+## 장고 프로젝트
+### 장고 새 프로젝트 생성
 ```
 django-admin startproject <project-name>
+```
+
+### 장고 프로젝트 실행
+```
+python manage.py runserver
+```
+
+### 장고 또 다른 프로젝트 생성
+```
+python manage.py startapp <project-name>
 ```
