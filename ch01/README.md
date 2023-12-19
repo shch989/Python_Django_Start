@@ -47,3 +47,30 @@ urlpatterns = [
 python manage.py runserver
 ```
 http://localhost:8000/challenges/january
+
+## Param 기능 사용
+### <param> 을 사용하여 Django에서 param 기능 구현 (urls.py)
+```
+urlpatterns = [
+    path("<month>", views.monthly_challenges)
+]
+```
+### URL에 입력된 값을 기반으로 로직 출력
+```
+...
+from django.http import HttpResponse, HttpResponseNotFound
+...
+
+def monthly_challenges(request, month):
+  challenge_text = None
+  if month == 'january':
+    challenge_text = "Eat no meat for the entire month!!"
+  elif month == "fabruary":
+    challenge_text = "Walk for at least 20 minutes every day!"
+  elif month == "march":
+    challenge_text = "Learn Django for at least 20 minutes every day!"
+  else:
+    return HttpResponseNotFound("This month is not supported!")
+  
+  return HttpResponse(challenge_text)
+```
