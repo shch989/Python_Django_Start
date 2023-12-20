@@ -25,9 +25,33 @@ INSTALLED_APPS = [
 ]
 ```
 
-### 템플릿 파일 반환
+### 템플릿 파일 반환 (render_to_string)
 #### 등록된 템플릿 폴더 위치에서 challenges/challenge.html 경로의 html 파일 반환
 ```
+...
+from django.template.loader import render_to_string
+...
+
 response_data = render_to_string("challenges/challenge.html")
 return HttpResponse(response_data)
+```
+
+### 템플릿 파일 반환 (render)
+```
+return render(request, "challenges/challenge.html")
+```
+
+## 템플릿 데이터 전송
+### views.py 에서 데이터 전송
+```
+return render(request, "challenges/challenge.html", {
+    "text": challenge_text
+})
+```
+### challenge.html 에서 데이터 받기
+```
+<body>
+  <h1>This Month's Challenge</h1>
+  <h2>{{ text }}</h2>
+</body>
 ```
