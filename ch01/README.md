@@ -83,3 +83,24 @@ urlpatterns = [
     path("<str:month>", views.monthly_challenges) # string 값
 ]
 ```
+
+## URL 패턴에서 동적으로 인자 받기
+### URL 패턴에 이름 부여
+#### urls.py (name을 통해 URL 패턴에 이름부여)
+```
+path("<str:month>", views.monthly_challenge, name="month-challenge")
+```
+#### views.py (URL 패턴에 이름 가져오기)
+```
+redirect_path = reverse("month-challenge")
+```
+#### views.py (URL 패턴에 Param 가져오기)
+```
+redirect_path = reverse("month-challenge", args=[redirect_month])
+```
+
+## Django에서 Html 코드 반환
+```
+response_data = f"<h1>{challenge_text}</h1>"
+return HttpResponse(response_data)
+```
